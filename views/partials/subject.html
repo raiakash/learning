@@ -1,0 +1,56 @@
+<div>
+<h1> Add Data. </h1>
+	<form novalidate>
+		Subject : <input type="text" ng-model='formData.subject'></input>
+		Teacher : <input type="text" ng-model='formData.teacher'></input><br>
+		Add Students :
+			<div ng-repeat='item in inputs'>
+				Student: <input type="text" ng-model='item.name'></input>
+			</div>
+		<input type='button' ng-click='addfield()' value="Add"></input><br>
+		<input type="submit" ng-click='update(formData)' value="Save" /> <br>
+		<input type='button' ng-click='reset()' value="Reset" />
+	</form>
+</div>
+
+<div>
+<h1> Fetch Details </h1>
+	<form>
+		Subject : <input type="text" ng-model="subject" />
+		<input type="submit" ng-click="getSubjectDetails(subject)" value="Submit" />
+	</form>
+	<div>
+	<span>Subject Name: {{subjectDetails.subject.name}}</span><br>
+	<span>Teacher Name: {{subjectDetails.subject.teacher.name}}</span>
+	<ul>
+		<li ng-repeat="student in subjectDetails.subject.students">{{student.name}}</li>
+	</ul>
+	</div>
+
+	<form>
+		Teacher : <input type="text" ng-model="teacher" />
+		<input type="submit" ng-click="getTeacherDetails(teacher)" value="Submit" />
+	</form>
+
+	<div>
+	<span>Teacher Name: {{teacherDetails.teacher.teacher.name}}</span><br>
+	<span>Subject Name: {{teacherDetails.teacher.name}}</span><br>
+	<ul>
+		<li ng-repeat="student in teacherDetails.teacher.students">{{student.name}}</li>
+	</ul>
+	</div>
+
+	<form>
+		Student Name: <input type="text" ng-model="student" />
+		<input type="submit" ng-click="getStudentDetails(student)" value="Submit" />
+	</form>
+
+	<div>
+		<ul>
+			<li ng-repeat="student in studentDetails.students">
+			<span>Teacher Name: {{student.teacher.name}}</span><br>
+			<span>Subject Name: {{student.name}}</span>	
+			</li>
+		</ul>
+	</div>
+</div>
